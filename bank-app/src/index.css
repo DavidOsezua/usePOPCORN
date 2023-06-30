@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --grad-intro: linear-gradient(
+    100deg,
+    hsl(13, 100%, 72%),
+    hsl(353, 100%, 62%)
+  );
+  --grad-infrastructure: linear-gradient(
+    to bottom,
+    hsl(237, 17%, 21%),
+    hsl(237, 23%, 32%)
+  );
+  --LightRed/*CTA text*/: hsl(356, 100%, 66%);
+  --VeryLightRed/*CTA hover background*/: hsl(355, 100%, 74%);
+  --VeryDarkBlue/*headings*/: hsl(208, 49%, 24%);
+
+  /* Neutral */
+
+  --White/*text*/: hsl(0, 0%, 100%);
+  --GrayishBlue/*footer text*/: hsl(240, 2%, 79%);
+  --VeryDarkGrayishBlue/*body copy*/: hsl(207, 13%, 34%);
+  --VeryDarkBlackBlue/*footer background*/: hsl(240, 10%, 16%);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input {
+  border: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.sectionContainer {
+  padding-top: 8rem;
+}
+
+/*=============== ENS OF REUSABLE CSS CLASSES ===============*/
+
+/*=============== ANIMATION FOR MOBILE MENU ===============*/
+.topbar {
+  -webkit-animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+/*=============== END OF ANIMATION ===============*/
+
+/*============== ANIMATION FOR OPEN TRANSITION ===============*/
+
+.transition {
+  animation: transitionIn 1.5s;
+}
+
+@keyframes transitionIn {
+  from {
+    opacity: 0;
+    transform: rotateX(0);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+
+/*=============== END OF ANIMATION FOR OPEN TRANSITION ===============*/
+
+/*=============== MOBILE RESPONSIVENESS ===============*/
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .topbar {
+    -webkit-animation: none;
+    animation: none;
+  }
+}

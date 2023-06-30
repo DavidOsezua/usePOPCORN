@@ -1,0 +1,57 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block: 6rem 9.2rem;
+  text-align: center;
+  color: #fff;
+}
+
+.contentContainer > * + * {
+  margin-top: 2rem;
+}
+
+.contentTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.contentText {
+  font-size: 1.3rem;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+}
+.btnContainer > * + * {
+  margin-left: 1rem;
+}
+
+.btn1 {
+  background-color: #fff;
+  color: var(--VeryLightRed);
+  transition: 0.3s all ease-in;
+}
+.btn1:hover {
+  background-color: var(--VeryLightRed);
+  color: #fff;
+  transition: 0.3s all ease-in;
+}
+
+.btn3 {
+  border: 1px solid #fff;
+  color: #fff;
+  transition: 0.3s all ease-in;
+}
+.btn3:hover {
+  background-color: #fff;
+  color: var(--VeryLightRed);
+  transition: 0.3s all ease-in;
+}
+
+@media screen and (min-width: 770px) {
+  .contentTitle {
+    font-size: 4rem;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,13 @@
+.btn {
+  /* background-color: #fff; */
+
+  padding: 1rem 3rem;
+  border-radius: 100vmax;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .btn {
+    padding: 1rem 1.5rem;
+  }
+}

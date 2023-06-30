@@ -1,0 +1,20 @@
+.header {
+  background-image: url('../assets/bg-pattern-intro-mobile.svg'),
+    var(--grad-intro);
+  background-repeat: no-repeat;
+  background-size: 355%, auto;
+  background-position: 36% 34%;
+  border-radius: 0 0 0 5rem;
+  /* padding-block: 3.5rem 2.5rem; */
+}
+@media screen and (min-width: 770px) {
+  .header {
+    background-image: url('../assets/bg-pattern-intro-desktop.svg'),
+      var(--grad-intro);
+    background-repeat: no-repeat;
+    background-size: 150%, auto;
+    background-position: 20% 50%;
+    border-radius: 0 0 0 5rem;
+    /* padding-block: 3.5rem 2.5rem; */
+  }
+}
