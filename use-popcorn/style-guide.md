@@ -10,7 +10,7 @@ The designs were created to the following widths:
 ## Colors
 
 ### Primary
- 
+
 - LightRed (CTA text): hsl(356, 100%, 66%)
 - VeryLightRed (CTA hover background): hsl(355, 100%, 74%)
 - VeryDarkBlue (headings): hsl(208, 49%, 24%)
@@ -31,8 +31,8 @@ Background gradient - Intro/CTA mobile nav:
 
 Background gradient - body:
 
-- Very dark gray blue: hsl(237, 17%, 21%)
-- Very dark desaturated blue: hsl(237, 23%, 32%)
+VeryDarkGrayBlue: hsl(237, 17%, 21%),
+VeryDarkDesaturatedBlue: hsl(237, 23%, 32%),
 
 ## Typography
 

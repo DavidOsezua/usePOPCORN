@@ -17,6 +17,8 @@ module.exports = {
         GrayishBlue /*footer text*/: 'hsl(240, 2%, 79%)',
         VeryDarkGrayishBlue /*body copy*/: 'hsl(207, 13%, 34%)',
         VeryDarkBlackBlue /*footer background*/: 'hsl(240, 10%, 16%)',
+        VeryDarkGrayBlue: 'hsl(237, 17%, 21%)',
+        VeryDarkDesaturatedBlue: 'hsl(237, 23%, 32%)',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
