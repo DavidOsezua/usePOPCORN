@@ -48,7 +48,7 @@ const tempWatchedData = [
   },
 ];
 
-const KEY = `c43525d7`;
+const KEY = "f7905970";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -60,6 +60,9 @@ export default function App() {
   fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=interstellar`)
     .then((res) => res.json())
     .then((data) => console.log(data));
+  /* this is a wrong way of fetching data from an api in react because it causes a side a effect
+   when a state is set causing to many renders and slowing down performance of our app.
+   */
   return (
     <>
       <Navbar>

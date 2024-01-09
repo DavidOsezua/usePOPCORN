@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./index.css";
 
 const tempMovieData = [
@@ -51,9 +51,44 @@ const tempWatchedData = [
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
+const KEY = "f7905970";
+
 export default function App() {
-  const [movies, setMovies] = useState(tempMovieData);
-  const [watched, setWatched] = useState(tempWatchedData);
+  const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const query = "cbvncnr";
+
+  useEffect(function () {
+    async function fetchMovies() {
+      try {
+        setIsLoading(true);
+        const res = await fetch(
+          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+        );
+
+        if (!res.ok)
+          throw new Error("something went wrong with fecthing movies");
+
+        const data = await res.json();
+        if (data.Response === "False") throw new Error("Movie not Found");
+        setMovies(data.Search);
+      } catch (err) {
+        console.error(err.message);
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    // console.log(
+    //   movies
+    // ); /*setting state is asynchronous and this line of code will be an empty array because its initial state has not been set */
+    fetchMovies();
+  }, []); /* The useEffect function dose not return anything.
+              The empty array means that the function inside the useEffect will only run when the app component renders for the very first time
+  */
+
   return (
     <>
       <Navbar>
@@ -63,7 +98,10 @@ export default function App() {
 
       <Main>
         <Box>
-          <MovieList movies={movies} />
+          {/* {isLoading ? <Loader /> : <MovieList movies={movies} />} */}
+          {isLoading && <Loader />}
+          {!isLoading && !error && <MovieList movies={movies} />}
+          {error && <ErrorMessage message={error} />}
         </Box>
 
         <Box>
@@ -73,6 +111,15 @@ export default function App() {
       </Main>
     </>
   );
+}
+
+//Loader
+function Loader() {
+  return <p className="loader">Loading....</p>;
+}
+
+function ErrorMessage({ message }) {
+  return <p className="error">{message}</p>;
 }
 
 function Navbar({ children }) {
