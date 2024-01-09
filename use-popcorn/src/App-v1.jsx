@@ -58,41 +58,52 @@ export default function App() {
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const query = "cbvncnr";
+  const [query, setQuery] = useState("");
+  // const query = "cbvncnr";
 
-  useEffect(function () {
-    async function fetchMovies() {
-      try {
-        setIsLoading(true);
-        const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
-        );
+  useEffect(
+    function () {
+      async function fetchMovies() {
+        try {
+          setIsLoading(true);
+          setError("");
+          const res = await fetch(
+            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+          );
 
-        if (!res.ok)
-          throw new Error("something went wrong with fecthing movies");
+          if (!res.ok)
+            throw new Error("something went wrong with fecthing movies");
 
-        const data = await res.json();
-        if (data.Response === "False") throw new Error("Movie not Found");
-        setMovies(data.Search);
-      } catch (err) {
-        console.error(err.message);
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
+          const data = await res.json();
+          if (data.Response === "False") throw new Error("Movie not Found");
+          setMovies(data.Search);
+        } catch (err) {
+          console.error(err.message);
+          setError(err.message);
+        } finally {
+          setIsLoading(false);
+        }
       }
-    }
-    // console.log(
-    //   movies
-    // ); /*setting state is asynchronous and this line of code will be an empty array because its initial state has not been set */
-    fetchMovies();
-  }, []); /* The useEffect function dose not return anything.
+      // console.log(
+      //   movies
+      // ); /*setting state is asynchronous and this line of code will be an empty array because its initial state has not been set */
+
+      if (query.length < 1) {
+        setMovies([]);
+        setError("");
+        return;
+      }
+      fetchMovies();
+    },
+    [query]
+  ); /* The useEffect function dose not return anything.
               The empty array means that the function inside the useEffect will only run when the app component renders for the very first time
   */
 
   return (
     <>
       <Navbar>
-        <Search />
+        <Search query={query} setQuery={setQuery} />
         <NumResults movies={movies} />
       </Navbar>
 
@@ -142,8 +153,7 @@ function Logo() {
 }
 
 //Search
-function Search() {
-  const [query, setQuery] = useState("");
+function Search({ query, setQuery }) {
   return (
     <input
       className="search"
